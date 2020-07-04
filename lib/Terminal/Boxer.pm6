@@ -117,15 +117,15 @@ say ss-box(:3col, :3cell, :indent("  "), 'A'..'E')
 
 =head1 DESCRIPTION
 
-Use Terminal::Boxer to easily generate "boxed" ASCII table for display in a terminal.
+Use Terminal::Boxer to easily generate "boxed" ASCII tables for display in a terminal.
 
-Has multiple pre-made subs using standard 'line drawing' characters as well as a few
+Has multiple pre-made subs using standard line drawing characters as well as a few
 non line drawing options. Provide your own drawing characters or rendering routine if
 desired.
 
 =head2 Premade Routines
 
-All of the premade routines take several optional parameters to specify layout:
+All of the premade routines take several optional parameters to specify layout and behavior:
 
 =item :&f  -   Optional routine to render the text inside each cell. By default this is a centering routine. Pass in a specialized routine if (for instance) you want to use ANSI color codes but don't want to count the ANSI as characters.
 
@@ -133,7 +133,7 @@ All of the premade routines take several optional parameters to specify layout:
 
 =item :$cell - Optional, cell width in characters. If none provided, uses the maximum with from the given content list.
 
-=item :$indent - Optional indent for the rendered table. Defaults to ''. Pass in a value to prepend to each row of the table.
+=item :$indent - Optional indent for the rendered table. Defaults to ''. Pass in a value to prepend to each row of the table. (Nominally, but not necessarily, whitespace.)
 
 =item @content - List or array. The actual content rendered to each cell.
 
