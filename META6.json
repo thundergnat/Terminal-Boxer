@@ -1,0 +1,18 @@
+{
+    "perl"          : "6.c",
+    "name"          : "Terminal::Boxer",
+    "version"       : "0.1",
+    "auth"          : "github:thundergnat",
+    "authors"       : ["Steve Schulze"],
+    "license"       : "Artistic-2.0",
+    "description"   : "Generate 'boxed' tables in a terminal",
+    "provides"      : { "Terminal::Boxer" : "lib/Terminal/Boxer.pm6" },
+    "depends"       : [ "" ],
+    "test-depends"  : [ "Test" ],
+    "build-depends" : [ ],
+    "tags"          : [ "termianl", "table", "box" ],
+    "support"       : {
+        "source"     : "https://github.com/thundergnat/Terminal-Boxer.git",
+        "bugtracker" : "https://github.com/thundergnat/Terminal-Boxer/issues"
+    }
+}
