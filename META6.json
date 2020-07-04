@@ -11,8 +11,6 @@
     "test-depends"  : [ "Test" ],
     "build-depends" : [ ],
     "tags"          : [ "termianl", "table", "box" ],
-    "support"       : {
-        "source"     : "https://github.com/thundergnat/Terminal-Boxer.git",
-        "bugtracker" : "https://github.com/thundergnat/Terminal-Boxer/issues"
-    }
+    "source-type"   : "git",
+    "source-url"    : "git://github.com/thundergnat/Terminal-Boxer.git",
 }
