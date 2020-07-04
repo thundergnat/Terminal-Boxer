@@ -131,7 +131,7 @@ All of the premade routines take several optional parameters to specify layout a
 
 =item :$col -  Optional, number of columns to render the table in. Defaults to the number of elements in @content.
 
-=item :$cell - Optional, cell width in characters. If none provided, uses the maximum with from the given content list.
+=item :$cell - Optional, cell width in characters. If none provided, uses the maximum width element size from the given content list.
 
 =item :$indent - Optional indent for the rendered table. Defaults to ''. Pass in a value to prepend to each row of the table. (Nominally, but not necessarily, whitespace.)
 
