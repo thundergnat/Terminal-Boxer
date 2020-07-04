@@ -154,7 +154,7 @@ If :cols (columns) is not specified, draws a single row table. If @content.elems
 
 If you need ultimate control, supply your own drawing characters, routine, anything.
 
-The drawing characters must be a 10 character string of the: vertical, horizontal, upper left, upper center, upper right, middle left, middle center, middle right, lower left, lower center, lower right, characters.
+The drawing characters must be a 10 character string of the: horizontal, vertical, upper left, upper center, upper right, middle left, middle center, middle right, lower left, lower center, lower right, characters.
 
 For example, the ss-box routine is implemented as:
 
