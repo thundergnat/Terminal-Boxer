@@ -12,5 +12,5 @@
     "build-depends" : [ ],
     "tags"          : [ "termianl", "table", "box" ],
     "source-type"   : "git",
-    "source-url"    : "git://github.com/thundergnat/Terminal-Boxer.git",
+    "source-url"    : "git://github.com/thundergnat/Terminal-Boxer.git"
 }
