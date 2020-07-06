@@ -1,73 +1,84 @@
-unit module Terminal::Boxer:ver<0.1>:auth<github:thundergnat>;
+unit module Terminal::Boxer:ver<0.0.2>:auth<github:thundergnat>;
 
-sub ss-box (:&f, :$col, :$cell, :$indent = '', *@content) is export {
+sub ss-box (:&f, :$col, :cell(:$cw), :$ch, :$indent = '', *@content) is export {
     my $columns = $col // +@content;
-    my $cell-chars = $cell // @content».chars.max;
-    draw( :draw('─│┌┬┐├┼┤└┴┘'), :&f, :col($columns), :cell($cell-chars), :indent($indent), @content )
+    my $cell-chars = $cw // @content».chars.max;
+    my $cell-height = $ch // +@content.max({+.lines}).lines;
+    draw( :draw('─│┌┬┐├┼┤└┴┘'), :&f, :col($columns), :cw($cell-chars), :ch($cell-height), :indent($indent), @content )
 }
 
-sub rs-box (:&f, :$col, :$cell, :$indent = '', *@content) is export {
+sub rs-box (:&f, :$col, :cell(:$cw), :$ch, :$indent = '', *@content) is export {
     my $columns = $col // +@content;
-    my $cell-chars = $cell // @content».chars.max;
-    draw( :draw('─│╭┬╮├┼┤╰┴╯'), :&f, :col($columns), :cell($cell-chars), :indent($indent), @content )
+    my $cell-chars = $cw // @content».chars.max;
+    my $cell-height = $ch // +@content.max({+.lines}).lines;
+    draw( :draw('─│╭┬╮├┼┤╰┴╯'), :&f, :col($columns), :cw($cell-chars), :ch($cell-height), :indent($indent), @content )
 }
 
-sub hs-box (:&f, :$col, :$cell, :$indent = '', *@content) is export {
+sub hs-box (:&f, :$col, :cell(:$cw), :$ch, :$indent = '', *@content) is export {
     my $columns = $col // +@content;
-    my $cell-chars = $cell // @content».chars.max;
-    draw( :draw('━┃┏┳┓┣╋┫┗┻┛'), :&f, :col($columns), :cell($cell-chars), :indent($indent), @content )
+    my $cell-chars = $cw // @content».chars.max;
+    my $cell-height = $ch // +@content.max({+.lines}).lines;
+    draw( :draw('━┃┏┳┓┣╋┫┗┻┛'), :&f, :col($columns), :cw($cell-chars), :ch($cell-height), :indent($indent), @content )
 }
 
-sub lh-box (:&f, :$col, :$cell, :$indent = '', *@content) is export {
+sub lh-box (:&f, :$col, :cell(:$cw), :$ch, :$indent = '', *@content) is export {
     my $columns = $col // +@content;
-    my $cell-chars = $cell // @content».chars.max;
-    draw( :draw('─┃┎┰┒┠╂┨┖┸┚'), :&f, :col($columns), :cell($cell-chars), :indent($indent), @content )
+    my $cell-chars = $cw // @content».chars.max;
+    my $cell-height = $ch // +@content.max({+.lines}).lines;
+    draw( :draw('─┃┎┰┒┠╂┨┖┸┚'), :&f, :col($columns), :cw($cell-chars), :ch($cell-height), :indent($indent), @content )
 }
 
-sub hl-box (:&f, :$col, :$cell, :$indent = '', *@content) is export {
+sub hl-box (:&f, :$col, :cell(:$cw), :$ch, :$indent = '', *@content) is export {
     my $columns = $col // +@content;
-    my $cell-chars = $cell // @content».chars.max;
-    draw( :draw('━│┍┯┑┝┿┥┕┷┙'), :&f, :col($columns), :cell($cell-chars), :indent($indent), @content )
+    my $cell-chars = $cw // @content».chars.max;
+    my $cell-height = $ch // +@content.max({+.lines}).lines;
+    draw( :draw('━│┍┯┑┝┿┥┕┷┙'), :&f, :col($columns), :cw($cell-chars), :ch($cell-height), :indent($indent), @content )
 }
 
-sub sd-box (:&f, :$col, :$cell, :$indent = '', *@content) is export {
+sub sd-box (:&f, :$col, :cell(:$cw), :$ch, :$indent = '', *@content) is export {
     my $columns = $col // +@content;
-    my $cell-chars = $cell // @content».chars.max;
-    draw( :draw('─║╓╥╖╟╫╢╙╨╜'), :&f, :col($columns), :cell($cell-chars), :indent($indent), @content )
+    my $cell-chars = $cw // @content».chars.max;
+    my $cell-height = $ch // +@content.max({+.lines}).lines;
+    draw( :draw('─║╓╥╖╟╫╢╙╨╜'), :&f, :col($columns), :cw($cell-chars), :ch($cell-height), :indent($indent), @content )
 }
 
-sub dd-box (:&f, :$col, :$cell, :$indent = '', *@content) is export {
+sub dd-box (:&f, :$col, :cell(:$cw), :$ch, :$indent = '', *@content) is export {
     my $columns = $col // +@content;
-    my $cell-chars = $cell // @content».chars.max;
-    draw( :draw('═║╔╦╗╠╬╣╚╩╝'), :&f, :col($columns), :cell($cell-chars), :indent($indent), @content )
+    my $cell-chars = $cw // @content».chars.max;
+    my $cell-height = $ch // +@content.max({+.lines}).lines;
+    draw( :draw('═║╔╦╗╠╬╣╚╩╝'), :&f, :col($columns), :cw($cell-chars), :ch($cell-height), :indent($indent), @content )
 }
 
-sub ds-box (:&f, :$col, :$cell, :$indent = '', *@content) is export {
+sub ds-box (:&f, :$col, :cell(:$cw), :$ch, :$indent = '', *@content) is export {
     my $columns = $col // +@content;
-    my $cell-chars = $cell // @content».chars.max;
-    draw( :draw('═│╒╤╕╞╪╡╘╧╛'), :&f, :col($columns), :cell($cell-chars), :indent($indent), @content )
-}
-
-
-sub ascii-box (:&f, :$col, :$cell, :$indent = '', *@content) is export {
-    my $columns = $col // +@content;
-    my $cell-chars = $cell // @content».chars.max;
-    draw( :draw('-|+++++++++'), :&f, :col($columns), :cell($cell-chars), :indent($indent), @content )
-}
-
-sub block-box (:&f, :$col, :$cell, :$indent = '', *@content) is export {
-    my $columns = $col // +@content;
-    my $cell-chars = $cell // @content».chars.max;
-    draw( :draw('▉▉▉▉▉▉▉▉▉▉▉'), :&f, :col($columns), :cell($cell-chars), :indent($indent), @content )
+    my $cell-chars = $cw // @content».chars.max;
+    my $cell-height = $ch // max @content».lines;
+    draw( :draw('═│╒╤╕╞╪╡╘╧╛'), :&f, :col($columns), :cw($cell-chars), :ch($cell-height), :indent($indent), @content )
 }
 
 
-sub draw (:$draw, :&f, :$col, :$cell, :$indent = '', *@content) is export {
+sub ascii-box (:&f, :$col, :cell(:$cw), :$ch, :$indent = '', *@content) is export {
     my $columns = $col // +@content;
-    my $cell-chars = $cell // @content».chars.max;
+    my $cell-chars = $cw // @content».chars.max;
+    my $cell-height = $ch // +@content.max({+.lines}).lines;
+    draw( :draw('-|+++++++++'), :&f, :col($columns), :cw($cell-chars), :ch($cell-height), :indent($indent), @content )
+}
+
+sub block-box (:&f, :$col, :cell(:$cw), :$ch, :$indent = '', *@content) is export {
+    my $columns = $col // +@content;
+    my $cell-chars = $cw // @content».chars.max;
+    my $cell-height = $ch // +@content.max({+.lines}).lines;
+    draw( :draw('▉▉▉▉▉▉▉▉▉▉▉'), :&f, :col($columns), :cw($cell-chars), :ch($cell-height), :indent($indent), @content )
+}
+
+
+sub draw (:$draw, :&f, :$col, :cell(:$cw), :$ch, :$indent = '', *@content) is export {
+    my $columns = $col // +@content;
+    my $cell-chars = $cw // @content».chars.max;
+    my $cell-height = $ch // +@content.max({+.lines}).lines;
     my &center = &f // sub ($s){
         my $cell = $cell-chars - $s.chars;
-        my $pad = ' ' x ceiling($cell/2);
+        my $pad = ' ' x floor($cell/2);
         sprintf "%{$cell-chars}s", "$s$pad";
     }
 
@@ -79,7 +90,11 @@ sub draw (:$draw, :&f, :$col, :$cell, :$indent = '', *@content) is export {
 
     sub row (*@row) {
         @row.push: '' while @row < $columns;
-        @box[1] ~ (join @box[1], @row».&center) ~ @box[1]
+        my @rows;
+        for ^$cell-height -> $line {
+           @rows.push: @box[1] ~ (join @box[1], @row.map( { (.lines[$line] // '').&center } ) ) ~ @box[1];
+       }
+       @rows.join: "\n$indent";
     }
 
     qq:to/END/;
@@ -88,7 +103,6 @@ sub draw (:$draw, :&f, :$col, :$cell, :$indent = '', *@content) is export {
     $indent$bot
     END
 }
-
 
 =begin pod
 
@@ -104,7 +118,7 @@ Terminal::Boxer - Draw boxed tables in a terminal.
 
 use Terminal::Boxer;
 
-say ss-box(:3col, :3cell, :indent("  "), 'A'..'E')
+say ss-box(:3col, :3cw, :indent("  "), 'A'..'E')
 
 #`[
   ┌───┬───┬───┐
@@ -113,11 +127,22 @@ say ss-box(:3col, :3cell, :indent("  "), 'A'..'E')
   │ D │ E │   │
   └───┴───┴───┘
 ]
+
+say dd-box( :8cw, :4ch, :indent("  "), ( "one of\nthese", "\nthings\nis not", "\nlike\nthe\nothers" ) );
+
+#`[
+  ╔════════╦════════╦════════╗
+  ║ one of ║        ║        ║
+  ║  these ║ things ║  like  ║
+  ║        ║ is not ║   the  ║
+  ║        ║        ║ others ║
+  ╚════════╩════════╩════════╝
+]
 =end code
 
 =head1 DESCRIPTION
 
-Use Terminal::Boxer to easily generate "boxed" ASCII tables for display in a terminal.
+Use Terminal::Boxer to easily generate "boxed" ASCII tables primarily for display in a terminal.
 
 Has multiple pre-made subs using standard line drawing characters as well as a few
 non line drawing options. Provide your own drawing characters or rendering routine if
@@ -127,22 +152,26 @@ desired.
 
 All of the premade routines take several optional parameters to specify layout and behavior:
 
-=item :&f  -   Optional routine to render the text inside each cell. By default this is a centering routine. Pass in a specialized routine if (for instance) you want to use ANSI color codes but don't want to count the ANSI as characters.
+=item :&f  - Optional routine to render the text inside each cell. By default this is a centering routine. Pass in a specialized routine if (for instance) you want to use ANSI color codes but don't want to count the ANSI as characters.
 
-=item :$col -  Optional, number of columns to render the table in. Defaults to the number of elements in @content.
+=item :col - Optional, number of columns to render the table in. Defaults to the number of elements in @content.
 
-=item :$cell - Optional, cell width in characters. If none provided, uses the maximum width element size from the given content list.
+=item :cw  - Optional, cell width in characters. If none provided, uses the maximum width element size from the given content list. If too small a :ch is provided, will not truncate, will distort table.
 
-=item :$indent - Optional indent for the rendered table. Defaults to ''. Pass in a value to prepend to each row of the table. (Nominally, but not necessarily, whitespace.)
+=item :ch  - Optional, cell height in characters. If none provided, uses the maximum height (lines) element size from the given content list. If :ch is provided, will truncate excess lines to that height.
+
+=item :indent - Optional indent for the rendered table. Defaults to ''. Pass in a value to prepend to each row of the table. (Nominally, but not necessarily, whitespace.)
 
 =item @content - List or array. The actual content rendered to each cell.
 
 
 If :cols (columns) is not specified, draws a single row table. If @content.elems is not evenly divisible by :cols, pads table with blank cells.
 
+Multi line cells are always rendered top biased. If you want to center or bottom bias the contents, it is up to you to pad the content with blank lines to properly locate it.
+
 --
 
-C<ss-box(:3col, :3cell, :indent("  "), 'A'..'E')>  single horizontal, single vertical
+C<ss-box(:3col, :3cw, :indent("  "), 'A'..'E')>  single horizontal, single vertical
 
     ┌───┬───┬───┐
     │ A │ B │ C │
@@ -151,7 +180,7 @@ C<ss-box(:3col, :3cell, :indent("  "), 'A'..'E')>  single horizontal, single ver
     └───┴───┴───┘
 --
 
-C<rs-box(:3col, :3cell, :indent("  "), 'A'..'E')> rounded corner, single horizontal, single vertical
+C<rs-box(:3col, :3cw, :indent("  "), 'A'..'E')> rounded corner, single horizontal, single vertical
 
     ╭───┬───┬───╮
     │ A │ B │ C │
@@ -161,7 +190,7 @@ C<rs-box(:3col, :3cell, :indent("  "), 'A'..'E')> rounded corner, single horizon
 
 --
 
-C<hs-box(:3col, :3cell, :indent("  "), 'A'..'E')>  heavy single horizontal, heavy single vertical
+C<hs-box(:3col, :3cw, :indent("  "), 'A'..'E')>  heavy single horizontal, heavy single vertical
 
     ┏━━━┳━━━┳━━━┓
     ┃ A ┃ B ┃ C ┃
@@ -171,7 +200,7 @@ C<hs-box(:3col, :3cell, :indent("  "), 'A'..'E')>  heavy single horizontal, heav
 
 --
 
-C<hl-box(:3col, :3cell, :indent("  "), 'A'..'E')>  heavy single horizontal, light single vertical
+C<hl-box(:3col, :3cw, :indent("  "), 'A'..'E')>  heavy single horizontal, light single vertical
 
     ┍━━━┯━━━┯━━━┑
     │ A │ B │ C │
@@ -181,7 +210,7 @@ C<hl-box(:3col, :3cell, :indent("  "), 'A'..'E')>  heavy single horizontal, ligh
 
 --
 
-C<lh-box(:3col, :3cell, :indent("  "), 'A'..'E')>  light single horizontal, heavy single vertical
+C<lh-box(:3col, :3cw, :indent("  "), 'A'..'E')>  light single horizontal, heavy single vertical
 
     ┎───┰───┰───┒
     ┃ A ┃ B ┃ C ┃
@@ -191,7 +220,7 @@ C<lh-box(:3col, :3cell, :indent("  "), 'A'..'E')>  light single horizontal, heav
 
 --
 
-C<sd-box(:3col, :3cell, :indent("  "), 'A'..'E')>  single horizontal, double vertical
+C<sd-box(:3col, :3cw, :indent("  "), 'A'..'E')>  single horizontal, double vertical
 
     ╓───╥───╥───╖
     ║ A ║ B ║ C ║
@@ -201,7 +230,7 @@ C<sd-box(:3col, :3cell, :indent("  "), 'A'..'E')>  single horizontal, double ver
 
 --
 
-C<ds-box(:3col, :3cell, :indent("  "), 'A'..'E')>  double horizontal, single vertical
+C<ds-box(:3col, :3cw, :indent("  "), 'A'..'E')>  double horizontal, single vertical
 
     ╒═══╤═══╤═══╕
     │ A │ B │ C │
@@ -211,7 +240,7 @@ C<ds-box(:3col, :3cell, :indent("  "), 'A'..'E')>  double horizontal, single ver
 
 --
 
-C<dd-box(:3col, :3cell, :indent("  "), 'A'..'E')>  double horizontal, double vertical
+C<dd-box(:3col, :3cw, :indent("  "), 'A'..'E')>  double horizontal, double vertical
 
     ╔═══╦═══╦═══╗
     ║ A ║ B ║ C ║
@@ -221,7 +250,7 @@ C<dd-box(:3col, :3cell, :indent("  "), 'A'..'E')>  double horizontal, double ver
 
 --
 
-C<ascii-box(:3col, :3cell, :indent("  "), 'A'..'E')>  basic ASCII drawing characters
+C<ascii-box(:3col, :3cw, :indent("  "), 'A'..'E')>  basic ASCII drawing characters
 
     +---+---+---+
     | A | B | C |
@@ -231,7 +260,7 @@ C<ascii-box(:3col, :3cell, :indent("  "), 'A'..'E')>  basic ASCII drawing charac
 
 --
 
-C<block-box(:3col, :3cell, :indent("  "), 'A'..'E')>  heavy block drawing characers
+C<block-box(:3col, :3cw, :indent("  "), 'A'..'E')>  heavy block drawing characters
 
     ▉▉▉▉▉▉▉▉▉▉▉▉▉
     ▉ A ▉ B ▉ C ▉
@@ -242,7 +271,7 @@ C<block-box(:3col, :3cell, :indent("  "), 'A'..'E')>  heavy block drawing charac
 
 =head3 Roll your own.
 
-C<draw(:$draw, :&f, :$col, :$cell, :$indent, *@content)>  The basic grawing routine
+C<draw(:$draw, :&f, :$col, :$cw, :$ch, :$indent, *@content)>  The basic drawing routine
 
 If you need ultimate control, supply your own drawing characters, routine, anything.
 
@@ -252,7 +281,7 @@ middle center, middle right, lower left, lower center, lower right, characters.
 
 For example, the ss-box routine is implemented as:
 
-C<draw( :draw('─│┌┬┐├┼┤└┴┘'), :&f, :col($columns), :cell($cell-chars), :indent($indent), @content )>
+C<draw( :draw('─│┌┬┐├┼┤└┴┘'), :&f, :col($columns), :cw($cell-width), :ch($cell-height), :indent($indent), @content )>
 
 with the appropriate defaults.
 

@@ -11,7 +11,7 @@ SYNOPSIS
 ```perl6
 use Terminal::Boxer;
 
-say ss-box(:3col, :3cell, :indent("  "), 'A'..'E')
+say ss-box(:3col, :3cw, :indent("  "), 'A'..'E')
 
 #`[
   ┌───┬───┬───┐
@@ -20,12 +20,23 @@ say ss-box(:3col, :3cell, :indent("  "), 'A'..'E')
   │ D │ E │   │
   └───┴───┴───┘
 ]
+
+say dd-box( :8cw, :4ch, :indent("  "), ( "one of\nthese", "\nthings\nis not", "\nlike\nthe\nothers" ) );
+
+#`[
+  ╔════════╦════════╦════════╗
+  ║ one of ║        ║        ║
+  ║  these ║ things ║  like  ║
+  ║        ║ is not ║   the  ║
+  ║        ║        ║ others ║
+  ╚════════╩════════╩════════╝
+]
 ```
 
 DESCRIPTION
 ===========
 
-Use Terminal::Boxer to easily generate "boxed" ASCII tables for display in a terminal.
+Use Terminal::Boxer to easily generate "boxed" ASCII tables primarily for display in a terminal.
 
 Has multiple pre-made subs using standard line drawing characters as well as a few non line drawing options. Provide your own drawing characters or rendering routine if desired.
 
@@ -36,19 +47,23 @@ All of the premade routines take several optional parameters to specify layout a
 
   * :&f - Optional routine to render the text inside each cell. By default this is a centering routine. Pass in a specialized routine if (for instance) you want to use ANSI color codes but don't want to count the ANSI as characters.
 
-  * :$col - Optional, number of columns to render the table in. Defaults to the number of elements in @content.
+  * :col - Optional, number of columns to render the table in. Defaults to the number of elements in @content.
 
-  * :$cell - Optional, cell width in characters. If none provided, uses the maximum width element size from the given content list.
+  * :cw - Optional, cell width in characters. If none provided, uses the maximum width element size from the given content list. If too small a :ch is provided, will not truncate, will distort table.
 
-  * :$indent - Optional indent for the rendered table. Defaults to ''. Pass in a value to prepend to each row of the table. (Nominally, but not necessarily, whitespace.)
+  * :ch - Optional, cell height in characters. If none provided, uses the maximum height (lines) element size from the given content list. If :ch is provided, will truncate excess lines to that height.
+
+  * :indent - Optional indent for the rendered table. Defaults to ''. Pass in a value to prepend to each row of the table. (Nominally, but not necessarily, whitespace.)
 
   * @content - List or array. The actual content rendered to each cell.
 
 If :cols (columns) is not specified, draws a single row table. If @content.elems is not evenly divisible by :cols, pads table with blank cells.
 
+Multi line cells are always rendered top biased. If you want to center or bottom bias the contents, it is up to you to pad the content with blank lines to properly locate it.
+
 --
 
-`ss-box(:3col, :3cell, :indent(" "), 'A'..'E')` single horizontal, single vertical
+`ss-box(:3col, :3cw, :indent(" "), 'A'..'E')` single horizontal, single vertical
 
     ┌───┬───┬───┐
     │ A │ B │ C │
@@ -58,7 +73,7 @@ If :cols (columns) is not specified, draws a single row table. If @content.elems
 
 --
 
-`rs-box(:3col, :3cell, :indent(" "), 'A'..'E')` rounded corner, single horizontal, single vertical
+`rs-box(:3col, :3cw, :indent(" "), 'A'..'E')` rounded corner, single horizontal, single vertical
 
     ╭───┬───┬───╮
     │ A │ B │ C │
@@ -68,7 +83,7 @@ If :cols (columns) is not specified, draws a single row table. If @content.elems
 
 --
 
-`hs-box(:3col, :3cell, :indent(" "), 'A'..'E')` heavy single horizontal, heavy single vertical
+`hs-box(:3col, :3cw, :indent(" "), 'A'..'E')` heavy single horizontal, heavy single vertical
 
     ┏━━━┳━━━┳━━━┓
     ┃ A ┃ B ┃ C ┃
@@ -78,7 +93,7 @@ If :cols (columns) is not specified, draws a single row table. If @content.elems
 
 --
 
-`hl-box(:3col, :3cell, :indent(" "), 'A'..'E')` heavy single horizontal, light single vertical
+`hl-box(:3col, :3cw, :indent(" "), 'A'..'E')` heavy single horizontal, light single vertical
 
     ┍━━━┯━━━┯━━━┑
     │ A │ B │ C │
@@ -88,7 +103,7 @@ If :cols (columns) is not specified, draws a single row table. If @content.elems
 
 --
 
-`lh-box(:3col, :3cell, :indent(" "), 'A'..'E')` light single horizontal, heavy single vertical
+`lh-box(:3col, :3cw, :indent(" "), 'A'..'E')` light single horizontal, heavy single vertical
 
     ┎───┰───┰───┒
     ┃ A ┃ B ┃ C ┃
@@ -98,7 +113,7 @@ If :cols (columns) is not specified, draws a single row table. If @content.elems
 
 --
 
-`sd-box(:3col, :3cell, :indent(" "), 'A'..'E')` single horizontal, double vertical
+`sd-box(:3col, :3cw, :indent(" "), 'A'..'E')` single horizontal, double vertical
 
     ╓───╥───╥───╖
     ║ A ║ B ║ C ║
@@ -108,7 +123,7 @@ If :cols (columns) is not specified, draws a single row table. If @content.elems
 
 --
 
-`ds-box(:3col, :3cell, :indent(" "), 'A'..'E')` double horizontal, single vertical
+`ds-box(:3col, :3cw, :indent(" "), 'A'..'E')` double horizontal, single vertical
 
     ╒═══╤═══╤═══╕
     │ A │ B │ C │
@@ -118,7 +133,7 @@ If :cols (columns) is not specified, draws a single row table. If @content.elems
 
 --
 
-`dd-box(:3col, :3cell, :indent(" "), 'A'..'E')` double horizontal, double vertical
+`dd-box(:3col, :3cw, :indent(" "), 'A'..'E')` double horizontal, double vertical
 
     ╔═══╦═══╦═══╗
     ║ A ║ B ║ C ║
@@ -128,7 +143,7 @@ If :cols (columns) is not specified, draws a single row table. If @content.elems
 
 --
 
-`ascii-box(:3col, :3cell, :indent(" "), 'A'..'E')` basic ASCII drawing characters
+`ascii-box(:3col, :3cw, :indent(" "), 'A'..'E')` basic ASCII drawing characters
 
     +---+---+---+
     | A | B | C |
@@ -138,7 +153,7 @@ If :cols (columns) is not specified, draws a single row table. If @content.elems
 
 --
 
-`block-box(:3col, :3cell, :indent(" "), 'A'..'E')` heavy block drawing characers
+`block-box(:3col, :3cw, :indent(" "), 'A'..'E')` heavy block drawing characters
 
     ▉▉▉▉▉▉▉▉▉▉▉▉▉
     ▉ A ▉ B ▉ C ▉
@@ -150,7 +165,7 @@ If :cols (columns) is not specified, draws a single row table. If @content.elems
 
 ### Roll your own.
 
-`draw(:$draw, :&f, :$col, :$cell, :$indent, *@content)` The basic grawing routine
+`draw(:$draw, :&f, :$col, :$cw, :$ch, :$indent, *@content)` The basic drawing routine
 
 If you need ultimate control, supply your own drawing characters, routine, anything.
 
@@ -158,7 +173,7 @@ The drawing characters must be a 10 character string of the: horizontal, vertica
 
 For example, the ss-box routine is implemented as:
 
-`draw( :draw('─│┌┬┐├┼┤└┴┘'), :&f, :col($columns), :cell($cell-chars), :indent($indent), @content )`
+`draw( :draw('─│┌┬┐├┼┤└┴┘'), :&f, :col($columns), :cw($cell-width), :ch($cell-height), :indent($indent), @content )`
 
 with the appropriate defaults.
 

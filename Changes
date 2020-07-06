@@ -1,3 +1,20 @@
 Revision history for Terminal-Boxer
 
-0.1 - Initial version
+0.1 -   Initial version
+
+
+0.2 -   Added capability to box multi-line content elements. Will
+        automatically adjust height to the maximum element height,
+        probably better to specify a width if there are multi-line
+        elements. It will probably guess to wide.
+
+        Default to justify to right of center for "uneven" elements.
+
+        Change :cell parameter to :cw (cell width). Still will accept
+        a :cell parameter, but it may go away in the future.
+
+        Added a :ch (cell height) parameter to specify a particular cell
+        height for multi-line cell contents.
+        (The reason for the :cell -> :cw change.)
+
+        Add tests for new behavior.

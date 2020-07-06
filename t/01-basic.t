@@ -2,7 +2,7 @@ use v6.c;
 use Test;
 use Terminal::Boxer;
 
-plan 12;
+plan 13;
 
 my @test =
 '┌───┬───┬───┐
@@ -66,8 +66,14 @@ my @test =
 ▉▉▉▉▉▉▉▉▉▉▉▉▉
 
 ┏━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┓
-┃0 ┃1 ┃2 ┃3 ┃4 ┃5 ┃6 ┃7 ┃8 ┃9 ┃10┃11┃12┃13┃14┃15┃16┃17┃18┃19┃
+┃ 0┃ 1┃ 2┃ 3┃ 4┃ 5┃ 6┃ 7┃ 8┃ 9┃10┃11┃12┃13┃14┃15┃16┃17┃18┃19┃
 ┗━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┛
+
+  ╔════════╦════════╦════════╗
+  ║ one of ║ things ║  like  ║
+  ║  these ║ is not ║   the  ║
+  ║        ║        ║ others ║
+  ╚════════╩════════╩════════╝
 
     ╭─────────┬─────────┬─────────╮
     │   one   │  three  │  nine   │
@@ -85,6 +91,10 @@ for &ss-box, &rs-box, &hs-box, &hl-box, &lh-box,
 }
 
 is( hs-box(^20).trim, @test[$i], "ok with no parameters");
+++$i;
+
+is( dd-box( :8cw, :indent("  "), ("one of\nthese", "things\nis not", "like\nthe\nothers")).chomp,
+  @test[$i], "multi line content ok");
 ++$i;
 
 my $mycell = 9;

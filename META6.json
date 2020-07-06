@@ -1,7 +1,7 @@
 {
     "perl"          : "6.c",
     "name"          : "Terminal::Boxer",
-    "version"       : "0.1",
+    "version"       : "0.2",
     "auth"          : "github:thundergnat",
     "authors"       : ["Steve Schulze"],
     "license"       : "Artistic-2.0",
