@@ -86,7 +86,7 @@ my $i = 0;
 for &ss-box, &rs-box, &hs-box, &hl-box, &lh-box,
     &sd-box, &ds-box, &dd-box, &ascii-box, &block-box
   -> &f {
-    is( f(:3col, :3cell, 'A'..'E').trim, @test[$i], "{&f.name} ok");
+    is( f(:3col, :3cw, 'A'..'E').trim, @test[$i], "{&f.name} ok");
     ++$i
 }
 
@@ -105,6 +105,6 @@ sub mycenter ($s) {
     sprintf("%{$mycell}s", "$s$pad")
 }
 
-is( rs-box(:f(&mycenter), :3col, :cell($mycell), :indent("    "), <one three nine eleven seventeen>), @test[$i], "ok with multiple parameters");
+is( rs-box(:f(&mycenter), :3col, :indent("    "), <one three nine eleven seventeen>), @test[$i], "ok with multiple parameters");
 
 done-testing;

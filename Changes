@@ -18,3 +18,7 @@ Revision history for Terminal-Boxer
         (The reason for the :cell -> :cw change.)
 
         Add tests for new behavior.
+
+0.2.1 - Fix a few minor documentation typos.
+        
+        Replace deprecated :cell parameter with :cw in test file. 

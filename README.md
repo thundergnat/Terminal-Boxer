@@ -49,7 +49,7 @@ All of the premade routines take several optional parameters to specify layout a
 
   * :col - Optional, number of columns to render the table in. Defaults to the number of elements in @content.
 
-  * :cw - Optional, cell width in characters. If none provided, uses the maximum width element size from the given content list. If too small a :ch is provided, will not truncate, will distort table.
+  * :cw - Optional, cell width in characters. If none provided, uses the maximum width element size from the given content list. If too small a :cw is provided, will not truncate, will distort table.
 
   * :ch - Optional, cell height in characters. If none provided, uses the maximum height (lines) element size from the given content list. If :ch is provided, will truncate excess lines to that height.
 
