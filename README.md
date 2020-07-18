@@ -163,6 +163,16 @@ Multi line cells are always rendered top biased. If you want to center or bottom
 
 ]
 
+--
+
+`no-box(:3col, :3cw, :indent(" "), 'A'..'E')` spaces
+
+    A   B   C  
+
+    D   E
+
+]
+
 ### Roll your own.
 
 `draw(:$draw, :&f, :$col, :$cw, :$ch, :$indent, *@content)` The basic drawing routine

@@ -1,4 +1,4 @@
-unit module Terminal::Boxer:ver<0.2.1>:auth<github:thundergnat>;
+unit module Terminal::Boxer:ver<0.2.2>:auth<github:thundergnat>;
 
 sub ss-box (:&f, :$col, :cell(:$cw), :$ch, :$indent = '', *@content) is export {
     my $columns = $col // +@content;
@@ -71,6 +71,12 @@ sub block-box (:&f, :$col, :cell(:$cw), :$ch, :$indent = '', *@content) is expor
     draw( :draw('▉▉▉▉▉▉▉▉▉▉▉'), :&f, :col($columns), :cw($cell-chars), :ch($cell-height), :indent($indent), @content )
 }
 
+sub no-box (:&f, :$col, :cell(:$cw), :$ch, :$indent = '', *@content) is export {
+    my $columns = $col // +@content;
+    my $cell-chars = $cw // @content».chars.max;
+    my $cell-height = $ch // +@content.max({+.lines}).lines;
+    draw( :draw('          '), :&f, :col($columns), :cw($cell-chars), :ch($cell-height), :indent($indent), @content )
+}
 
 sub draw (:$draw, :&f, :$col, :cell(:$cw), :$ch, :$indent = '', *@content) is export {
     my $columns = $col // +@content;
@@ -267,6 +273,17 @@ C<block-box(:3col, :3cw, :indent("  "), 'A'..'E')>  heavy block drawing characte
     ▉▉▉▉▉▉▉▉▉▉▉▉▉
     ▉ D ▉ E ▉   ▉
     ▉▉▉▉▉▉▉▉▉▉▉▉▉
+]
+
+--
+
+C<no-box(:3col, :3cw, :indent("  "), 'A'..'E')>  spaces
+
+
+      A   B   C  
+
+      D   E
+
 ]
 
 =head3 Roll your own.
