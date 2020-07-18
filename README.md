@@ -161,17 +161,13 @@ Multi line cells are always rendered top biased. If you want to center or bottom
     ▉ D ▉ E ▉   ▉
     ▉▉▉▉▉▉▉▉▉▉▉▉▉
 
-]
-
 --
 
 `no-box(:3col, :3cw, :indent(" "), 'A'..'E')` spaces
 
-    A   B   C  
+    A   B   C
 
     D   E
-
-]
 
 ### Roll your own.
 

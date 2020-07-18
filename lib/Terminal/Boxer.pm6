@@ -273,18 +273,17 @@ C<block-box(:3col, :3cw, :indent("  "), 'A'..'E')>  heavy block drawing characte
     ▉▉▉▉▉▉▉▉▉▉▉▉▉
     ▉ D ▉ E ▉   ▉
     ▉▉▉▉▉▉▉▉▉▉▉▉▉
-]
+
 
 --
 
 C<no-box(:3col, :3cw, :indent("  "), 'A'..'E')>  spaces
 
 
-      A   B   C  
+      A   B   C
 
       D   E
 
-]
 
 =head3 Roll your own.
 
