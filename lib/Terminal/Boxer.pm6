@@ -1,4 +1,4 @@
-unit module Terminal::Boxer:ver<0.2.2>:auth<github:thundergnat>;
+unit module Terminal::Boxer:ver<0.3.0>:auth<github:thundergnat>;
 
 sub ss-box (:&f, :$col, :cell(:$cw), :$ch, :$indent = '', *@content) is export {
     my $columns = $col // +@content;

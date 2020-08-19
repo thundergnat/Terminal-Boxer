@@ -1,7 +1,12 @@
 Revision history for Terminal-Boxer
 
-0.1 -   Initial version
+0.3.0 - Fix a few minor problems automated testing was stumbling over,
+          no functional changes.
 
+
+0.2.1 - Fix a few minor documentation typos.
+        
+        Replace deprecated :cell parameter with :cw in test file.
 
 0.2 -   Added capability to box multi-line content elements. Will
         automatically adjust height to the maximum element height,
@@ -19,6 +24,9 @@ Revision history for Terminal-Boxer
 
         Add tests for new behavior.
 
-0.2.1 - Fix a few minor documentation typos.
-        
-        Replace deprecated :cell parameter with :cw in test file. 
+0.1 -   Initial version
+
+
+
+
+
