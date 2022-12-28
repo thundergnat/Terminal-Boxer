@@ -1,6 +1,8 @@
 Revision history for Terminal-Boxer
 
 {{$NEXT}}
+
+0.3.1  2022-12-28T12:01:16-05:00
     - Migrate to fez ecosystem
 
 0.3.0 - Add no-box routine
