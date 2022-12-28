@@ -1,14 +1,14 @@
+[![Actions Status](https://github.com/thundergnat/Terminal-Boxer/actions/workflows/test.yml/badge.svg)](https://github.com/thundergnat/Terminal-Boxer/actions)
+
 NAME
 ====
 
 Terminal::Boxer - Draw boxed tables in a terminal.
 
-[![Build Status](https://travis-ci.org/thundergnat/Terminal-Boxer.svg?branch=master)](https://travis-ci.org/thundergnat/Terminal-Boxer)
-
 SYNOPSIS
 ========
 
-```perl6
+```raku
 use Terminal::Boxer;
 
 say ss-box(:3col, :3cw, :indent("  "), 'A'..'E')

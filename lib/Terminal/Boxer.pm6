@@ -1,4 +1,4 @@
-unit module Terminal::Boxer:ver<0.3.0>:auth<github:thundergnat>;
+unit module Terminal::Boxer:ver<0.3.1>:auth<zef:thundergnat>;
 
 sub ss-box (:&f, :$col, :cell(:$cw), :$ch, :$indent = '', *@content) is export {
     my $columns = $col // +@content;
@@ -116,11 +116,9 @@ sub draw (:$draw, :&f, :$col, :cell(:$cw), :$ch, :$indent = '', *@content) is ex
 
 Terminal::Boxer - Draw boxed tables in a terminal.
 
-[![Build Status](https://travis-ci.org/thundergnat/Terminal-Boxer.svg?branch=master)](https://travis-ci.org/thundergnat/Terminal-Boxer)
-
 =head1 SYNOPSIS
 
-=begin code :lang<perl6>
+=begin code :lang<raku>
 
 use Terminal::Boxer;
 
